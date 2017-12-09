@@ -8,11 +8,15 @@
 
 #import "ViewController.h"
 #import "KVBImageLoader.h"
+#import "KVBImageModel.h"
+
 static const NSString *KVBCellIdentifier = @"DefaultCell";
 
-@interface ViewController ()<UITextFieldDelegate, UITableViewDataSource>
+@interface ViewController ()<UITextFieldDelegate, UITableViewDataSource, KVBImageLoaderDelegate>
+
 @property(nonatomic, strong) KVBImageLoader *loader;
 @property(nonatomic, strong) UITableView *tableView;
+@property(nonatomic, strong) NSArray<KVBImageModel*> *photosArray;
 @property(nonatomic, weak) UITextField *searchField;
 
 @end
@@ -31,9 +35,11 @@ static const NSString *KVBCellIdentifier = @"DefaultCell";
                                                                    self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height)
                                                   style:UITableViewStylePlain];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:KVBCellIdentifier];
-        
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+
         _loader = [[KVBImageLoader alloc] init];
-        
+        _loader.delegate = self;
         [self.view addSubview:_tableView];
     }
     return self;
@@ -78,13 +84,52 @@ static const NSString *KVBCellIdentifier = @"DefaultCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.photosArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:KVBCellIdentifier forIndexPath:indexPath];
     
+    KVBImageModel *image = self.photosArray[indexPath.row];
+
+    
+    cell.textLabel.text = image.personDescription;
+
+    
     return cell;
 }
+
+#pragma mark KVBImageLoaderDelegate
+
+- (void)loadingComplete
+{
+    NSMutableArray *array = [NSMutableArray arrayWithArray:self.photosArray];
+    
+    
+    [self.tableView beginUpdates];
+    
+
+
+#pragma marl -Dopilitb obnovleniay
+    NSMutableArray *indexPathArray = [NSMutableArray array];
+    NSInteger i = 0;
+    
+    for(id obj in self.loader.photosByReuest)
+    {
+    
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.photosArray.count + i inSection:0];
+        [indexPathArray addObject:indexPath];
+        i++;
+    }
+    
+    [self.tableView insertRowsAtIndexPaths:indexPathArray withRowAnimation:UITableViewRowAnimationLeft];
+    
+    [array addObjectsFromArray:self.loader.photosByReuest];
+    self.photosArray = array;
+
+    [self.tableView endUpdates];
+//    [self.tableView reloadData];
+}
+
 
 @end

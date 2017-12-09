@@ -13,6 +13,7 @@
 		B5CA7A3C1FDC388400B168DA /* KVBFlikker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5CA7A3A1FDC388400B168DA /* KVBFlikker.xcdatamodeld */; };
 		B5CA7A3E1FDC388400B168DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5CA7A3D1FDC388400B168DA /* Assets.xcassets */; };
 		B5F2384B1FDC4CD400405F23 /* KVBImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F2384A1FDC4CD400405F23 /* KVBImageLoader.m */; };
+		B5F2384E1FDC812E00405F23 /* KVBImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F2384D1FDC812E00405F23 /* KVBImageModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		B5CA7A421FDC388400B168DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5F238491FDC4CD400405F23 /* KVBImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVBImageLoader.h; sourceTree = "<group>"; };
 		B5F2384A1FDC4CD400405F23 /* KVBImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVBImageLoader.m; sourceTree = "<group>"; };
+		B5F2384C1FDC812E00405F23 /* KVBImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVBImageModel.h; sourceTree = "<group>"; };
+		B5F2384D1FDC812E00405F23 /* KVBImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVBImageModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,8 @@
 				B5CA7A351FDC388300B168DA /* ViewController.m */,
 				B5F238491FDC4CD400405F23 /* KVBImageLoader.h */,
 				B5F2384A1FDC4CD400405F23 /* KVBImageLoader.m */,
+				B5F2384C1FDC812E00405F23 /* KVBImageModel.h */,
+				B5F2384D1FDC812E00405F23 /* KVBImageModel.m */,
 				B5CA7A3D1FDC388400B168DA /* Assets.xcassets */,
 				B5CA7A421FDC388400B168DA /* Info.plist */,
 				B5CA7A3A1FDC388400B168DA /* KVBFlikker.xcdatamodeld */,
@@ -156,6 +161,7 @@
 				B5F2384B1FDC4CD400405F23 /* KVBImageLoader.m in Sources */,
 				B5CA7A3C1FDC388400B168DA /* KVBFlikker.xcdatamodeld in Sources */,
 				B5CA7A301FDC388300B168DA /* main.m in Sources */,
+				B5F2384E1FDC812E00405F23 /* KVBImageModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
