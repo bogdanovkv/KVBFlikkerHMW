@@ -10,10 +10,9 @@
 		B5CA7A301FDC388300B168DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CA7A2F1FDC388300B168DA /* main.m */; };
 		B5CA7A331FDC388300B168DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CA7A321FDC388300B168DA /* AppDelegate.m */; };
 		B5CA7A361FDC388300B168DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CA7A351FDC388300B168DA /* ViewController.m */; };
-		B5CA7A391FDC388400B168DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5CA7A371FDC388400B168DA /* Main.storyboard */; };
 		B5CA7A3C1FDC388400B168DA /* KVBFlikker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5CA7A3A1FDC388400B168DA /* KVBFlikker.xcdatamodeld */; };
 		B5CA7A3E1FDC388400B168DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5CA7A3D1FDC388400B168DA /* Assets.xcassets */; };
-		B5CA7A411FDC388400B168DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5CA7A3F1FDC388400B168DA /* LaunchScreen.storyboard */; };
+		B5F2384B1FDC4CD400405F23 /* KVBImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F2384A1FDC4CD400405F23 /* KVBImageLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +22,11 @@
 		B5CA7A321FDC388300B168DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B5CA7A341FDC388300B168DA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B5CA7A351FDC388300B168DA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B5CA7A381FDC388400B168DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5CA7A3B1FDC388400B168DA /* KVBFlikker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KVBFlikker.xcdatamodel; sourceTree = "<group>"; };
 		B5CA7A3D1FDC388400B168DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B5CA7A401FDC388400B168DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5CA7A421FDC388400B168DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5F238491FDC4CD400405F23 /* KVBImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVBImageLoader.h; sourceTree = "<group>"; };
+		B5F2384A1FDC4CD400405F23 /* KVBImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVBImageLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +63,9 @@
 				B5CA7A321FDC388300B168DA /* AppDelegate.m */,
 				B5CA7A341FDC388300B168DA /* ViewController.h */,
 				B5CA7A351FDC388300B168DA /* ViewController.m */,
-				B5CA7A371FDC388400B168DA /* Main.storyboard */,
+				B5F238491FDC4CD400405F23 /* KVBImageLoader.h */,
+				B5F2384A1FDC4CD400405F23 /* KVBImageLoader.m */,
 				B5CA7A3D1FDC388400B168DA /* Assets.xcassets */,
-				B5CA7A3F1FDC388400B168DA /* LaunchScreen.storyboard */,
 				B5CA7A421FDC388400B168DA /* Info.plist */,
 				B5CA7A3A1FDC388400B168DA /* KVBFlikker.xcdatamodeld */,
 				B5CA7A2E1FDC388300B168DA /* Supporting Files */,
@@ -141,9 +140,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5CA7A411FDC388400B168DA /* LaunchScreen.storyboard in Resources */,
 				B5CA7A3E1FDC388400B168DA /* Assets.xcassets in Resources */,
-				B5CA7A391FDC388400B168DA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,31 +153,13 @@
 			files = (
 				B5CA7A361FDC388300B168DA /* ViewController.m in Sources */,
 				B5CA7A331FDC388300B168DA /* AppDelegate.m in Sources */,
+				B5F2384B1FDC4CD400405F23 /* KVBImageLoader.m in Sources */,
 				B5CA7A3C1FDC388400B168DA /* KVBFlikker.xcdatamodeld in Sources */,
 				B5CA7A301FDC388300B168DA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		B5CA7A371FDC388400B168DA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B5CA7A381FDC388400B168DA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B5CA7A3F1FDC388400B168DA /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B5CA7A401FDC388400B168DA /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B5CA7A431FDC388400B168DA /* Debug */ = {
@@ -316,6 +295,7 @@
 				B5CA7A471FDC388400B168DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
