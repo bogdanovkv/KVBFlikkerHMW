@@ -17,7 +17,11 @@ static const NSString *KVBCellIdentifier = @"DefaultCell";
 @property(nonatomic, strong) KVBImageLoader *loader;
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) NSArray<KVBImageModel*> *photosArray;
+@property(nonatomic, strong) NSMutableArray<NSURL*> *cachePaths;
+@property(nonatomic, strong) NSCache *cache;
+@property(nonatomic, assign) NSInteger pageOfLoading;
 @property(nonatomic, weak) UITextField *searchField;
+
 
 @end
 
@@ -40,6 +44,12 @@ static const NSString *KVBCellIdentifier = @"DefaultCell";
 
         _loader = [[KVBImageLoader alloc] init];
         _loader.delegate = self;
+        
+        _cachePaths = [NSMutableArray array];
+        
+        _pageOfLoading = 15;
+        
+        _cache = [[NSCache alloc] init];
         [self.view addSubview:_tableView];
     }
     return self;
@@ -71,8 +81,8 @@ static const NSString *KVBCellIdentifier = @"DefaultCell";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    
-    [self.loader downloadImagesForTags: self.searchField.text Page:1 andAmount:8];
+    NSInteger number = 15;
+    [self.loader downloadImagesForTags: self.searchField.text Page:1 andAmount:number];
     
     [self.navigationItem.titleView resignFirstResponder];
     return YES;
@@ -91,10 +101,34 @@ static const NSString *KVBCellIdentifier = @"DefaultCell";
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:KVBCellIdentifier forIndexPath:indexPath];
     
     KVBImageModel *image = self.photosArray[indexPath.row];
-
     
-    cell.textLabel.text = image.personDescription;
+    if ([self.cache objectForKey:@(indexPath.row)] != nil)
+    {
+        
+        UIImage *photo = [self.cache objectForKey:@(indexPath.row)];
+        
+        cell.imageView.image = photo;
+    }
+    else
+    {
+        cell.imageView.image = [UIImage imageNamed:@"defimg.png"];
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+        NSURLSessionDownloadTask *download = [session downloadTaskWithURL:[NSURL URLWithString:image.urlSQ] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            
+            NSData *data = [NSData dataWithContentsOfURL:location];
+            UIImage *photo = [UIImage imageWithData:data];
+            [self.cache setObject:photo forKey:@(indexPath.row)];
+            
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                cell.imageView.image = photo;
+            });
+        }];
+        
+        [download resume];
+    }
 
+    cell.textLabel.text = image.personDescription;
     
     return cell;
 }
@@ -110,7 +144,6 @@ static const NSString *KVBCellIdentifier = @"DefaultCell";
     
 
 
-#pragma marl -Dopilitb obnovleniay
     NSMutableArray *indexPathArray = [NSMutableArray array];
     NSInteger i = 0;
     

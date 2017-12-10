@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSArray<KVBImageModel*> *photosByReuest;
 @property (nonatomic, weak) id <KVBImageLoaderDelegate> delegate;
 
-- (void)downloadImagesForTags: (NSString*) tags Page: (NSInteger) page andAmount: (NSInteger*) amount;
+- (void)downloadImagesForTags: (NSString*) tags Page: (NSInteger) page andAmount: (NSInteger) amount;
 
 @end
 

@@ -20,7 +20,7 @@
 }
 // https://api.flickr.com/services/rest/?method=flickr.test.echo&name=value
 
-- (NSArray*)downloadImagesForTags: (NSString*) tags Page: (NSInteger) page andAmount: (NSInteger*) amount
+- (void)downloadImagesForTags: (NSString*) tags Page: (NSInteger) page andAmount: (NSInteger*) amount
 {
 //   
 //    NSString *string = [tags stringByReplacingOccurrencesOfString:@" " withString:@"," ];
@@ -62,15 +62,17 @@
             [array addObject:model];
         }
         self.photosByReuest = array;
-        
-        [self.delegate loadingComplete];
-        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+
+            [self.delegate loadingComplete];
+
+        });
+
         
     }];
 
     [dataTask resume];
     
-    return [NSArray array];
 }
 
 
