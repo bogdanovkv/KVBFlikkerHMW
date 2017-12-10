@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		14FAA8C71FDD7BD80065EA8C /* defimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 14FAA8C61FDD7BD80065EA8C /* defimg.png */; };
+		14FAA8CA1FDDB29F0065EA8C /* KVBLikedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FAA8C91FDDB29F0065EA8C /* KVBLikedViewController.m */; };
+		14FAA8D01FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FAA8CD1FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.m */; };
+		14FAA8D11FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FAA8CF1FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.m */; };
 		B5CA7A301FDC388300B168DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CA7A2F1FDC388300B168DA /* main.m */; };
 		B5CA7A331FDC388300B168DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CA7A321FDC388300B168DA /* AppDelegate.m */; };
 		B5CA7A361FDC388300B168DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CA7A351FDC388300B168DA /* ViewController.m */; };
@@ -19,6 +22,12 @@
 
 /* Begin PBXFileReference section */
 		14FAA8C61FDD7BD80065EA8C /* defimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defimg.png; sourceTree = "<group>"; };
+		14FAA8C81FDDB29F0065EA8C /* KVBLikedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVBLikedViewController.h; sourceTree = "<group>"; };
+		14FAA8C91FDDB29F0065EA8C /* KVBLikedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVBLikedViewController.m; sourceTree = "<group>"; };
+		14FAA8CC1FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SavedPhotos+CoreDataClass.h"; sourceTree = "<group>"; };
+		14FAA8CD1FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SavedPhotos+CoreDataClass.m"; sourceTree = "<group>"; };
+		14FAA8CE1FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SavedPhotos+CoreDataProperties.h"; sourceTree = "<group>"; };
+		14FAA8CF1FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SavedPhotos+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B5CA7A2B1FDC388300B168DA /* KVBFlikker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KVBFlikker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5CA7A2F1FDC388300B168DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5CA7A311FDC388300B168DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,6 +54,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14FAA8CB1FDDBD7F0065EA8C /* CoreDataClasses */ = {
+			isa = PBXGroup;
+			children = (
+				14FAA8CC1FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.h */,
+				14FAA8CD1FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.m */,
+				14FAA8CE1FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.h */,
+				14FAA8CF1FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.m */,
+			);
+			name = CoreDataClasses;
+			sourceTree = "<group>";
+		};
 		B5CA7A221FDC388300B168DA = {
 			isa = PBXGroup;
 			children = (
@@ -68,10 +88,13 @@
 				B5CA7A321FDC388300B168DA /* AppDelegate.m */,
 				B5CA7A341FDC388300B168DA /* ViewController.h */,
 				B5CA7A351FDC388300B168DA /* ViewController.m */,
+				14FAA8C81FDDB29F0065EA8C /* KVBLikedViewController.h */,
+				14FAA8C91FDDB29F0065EA8C /* KVBLikedViewController.m */,
 				B5F238491FDC4CD400405F23 /* KVBImageLoader.h */,
 				B5F2384A1FDC4CD400405F23 /* KVBImageLoader.m */,
 				B5F2384C1FDC812E00405F23 /* KVBImageModel.h */,
 				B5F2384D1FDC812E00405F23 /* KVBImageModel.m */,
+				14FAA8CB1FDDBD7F0065EA8C /* CoreDataClasses */,
 				14FAA8C61FDD7BD80065EA8C /* defimg.png */,
 				B5CA7A3D1FDC388400B168DA /* Assets.xcassets */,
 				B5CA7A421FDC388400B168DA /* Info.plist */,
@@ -115,7 +138,7 @@
 		B5CA7A231FDC388300B168DA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Konstantin;
 				TargetAttributes = {
 					B5CA7A2A1FDC388300B168DA = {
@@ -160,8 +183,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14FAA8CA1FDDB29F0065EA8C /* KVBLikedViewController.m in Sources */,
 				B5CA7A361FDC388300B168DA /* ViewController.m in Sources */,
+				14FAA8D01FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.m in Sources */,
 				B5CA7A331FDC388300B168DA /* AppDelegate.m in Sources */,
+				14FAA8D11FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.m in Sources */,
 				B5F2384B1FDC4CD400405F23 /* KVBImageLoader.m in Sources */,
 				B5CA7A3C1FDC388400B168DA /* KVBFlikker.xcdatamodeld in Sources */,
 				B5CA7A301FDC388300B168DA /* main.m in Sources */,
@@ -181,7 +207,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -189,7 +217,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -229,7 +261,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -237,7 +271,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

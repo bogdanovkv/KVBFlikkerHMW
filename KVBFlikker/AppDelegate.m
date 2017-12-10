@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-
+#import "KVBLikedViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -18,10 +18,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[ViewController new]];
     
-        
-    self.window.rootViewController = navController;
+    UITabBarController *tabBar = [[UITabBarController alloc] init];
+    
+    UITabBarItem *leftItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0];
+    UITabBarItem *rightItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemDownloads tag:1];
+   
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[ViewController new]];
+    navController.tabBarItem = leftItem;
+    KVBLikedViewController *likedController = [KVBLikedViewController new];
+    likedController.tabBarItem = rightItem;
+    
+    tabBar.viewControllers = @[navController,likedController];
+    self.window.rootViewController = tabBar;
+    
+    
     [self.window makeKeyAndVisible];
     
     return YES;

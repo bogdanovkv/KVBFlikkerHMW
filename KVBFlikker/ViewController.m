@@ -11,13 +11,13 @@
 #import "KVBImageModel.h"
 
 static const NSString *KVBCellIdentifier = @"DefaultCell";
+static const NSInteger KVBPhotoPerLoading = 15;
 
-@interface ViewController ()<UITextFieldDelegate, UITableViewDataSource, KVBImageLoaderDelegate>
+@interface ViewController ()<UITextFieldDelegate,UITableViewDelegate, UITableViewDataSource, KVBImageLoaderDelegate>
 
 @property(nonatomic, strong) KVBImageLoader *loader;
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) NSArray<KVBImageModel*> *photosArray;
-@property(nonatomic, strong) NSMutableArray<NSURL*> *cachePaths;
 @property(nonatomic, strong) NSCache *cache;
 @property(nonatomic, assign) NSInteger pageOfLoading;
 @property(nonatomic, weak) UITextField *searchField;
@@ -38,6 +38,7 @@ static const NSString *KVBCellIdentifier = @"DefaultCell";
                                                                    self.view.frame.size.width,
                                                                    self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height)
                                                   style:UITableViewStylePlain];
+        
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:KVBCellIdentifier];
         _tableView.dataSource = self;
         _tableView.delegate = self;
@@ -45,9 +46,7 @@ static const NSString *KVBCellIdentifier = @"DefaultCell";
         _loader = [[KVBImageLoader alloc] init];
         _loader.delegate = self;
         
-        _cachePaths = [NSMutableArray array];
-        
-        _pageOfLoading = 15;
+        _pageOfLoading = 1;
         
         _cache = [[NSCache alloc] init];
         [self.view addSubview:_tableView];
@@ -79,14 +78,41 @@ static const NSString *KVBCellIdentifier = @"DefaultCell";
 
 #pragma mark UITextFieldDelegate
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if(self.photosArray.count != 0)
+    {
+        [self.cache removeAllObjects];
+        self.pageOfLoading = 1;
+        self.photosArray = [NSArray array];
+        [self.tableView reloadData];
+    }
+    return YES;
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSInteger number = 15;
-    [self.loader downloadImagesForTags: self.searchField.text Page:1 andAmount:number];
+
+    [self.loader downloadImagesForTags: self.searchField.text Page:self.pageOfLoading andAmount:KVBPhotoPerLoading];
     
     [self.navigationItem.titleView resignFirstResponder];
+    
     return YES;
     
+}
+
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == self.photosArray.count - 1)
+    {
+        if(self.pageOfLoading != self.loader.pageCount)
+        {
+            self.pageOfLoading++;
+        }
+        [self.loader downloadImagesForTags: self.searchField.text Page:self.pageOfLoading andAmount:KVBPhotoPerLoading];
+
+    }
 }
 
 
@@ -145,14 +171,13 @@ static const NSString *KVBCellIdentifier = @"DefaultCell";
 
 
     NSMutableArray *indexPathArray = [NSMutableArray array];
-    NSInteger i = 0;
+
     
-    for(id obj in self.loader.photosByReuest)
+    for(NSInteger i = 0; i< self.loader.photosByReuest.count;i++)
     {
     
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.photosArray.count + i inSection:0];
         [indexPathArray addObject:indexPath];
-        i++;
     }
     
     [self.tableView insertRowsAtIndexPaths:indexPathArray withRowAnimation:UITableViewRowAnimationLeft];

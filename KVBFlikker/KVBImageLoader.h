@@ -12,6 +12,7 @@
 
 @interface KVBImageLoader : NSObject
 
+@property (nonatomic, assign) NSInteger pageCount;
 @property (nonatomic, strong) NSArray<KVBImageModel*> *photosByReuest;
 @property (nonatomic, weak) id <KVBImageLoaderDelegate> delegate;
 
