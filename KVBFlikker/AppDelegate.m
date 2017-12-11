@@ -24,9 +24,13 @@
     UITabBarItem *leftItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0];
     UITabBarItem *rightItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemDownloads tag:1];
    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[ViewController new]];
+    ViewController *vc = [ViewController new];
+    vc.contex = self.persistentContainer.viewContext;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
     navController.tabBarItem = leftItem;
-    KVBLikedViewController *likedController = [KVBLikedViewController new];
+    
+    
+    KVBLikedViewController *likedController = [[KVBLikedViewController alloc] initWithContext:self.persistentContainer.viewContext];
     likedController.tabBarItem = rightItem;
     
     tabBar.viewControllers = @[navController,likedController];

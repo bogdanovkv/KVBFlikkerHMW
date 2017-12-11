@@ -10,7 +10,7 @@
 #import "KVBImageLoader.h"
 #import "KVBImageModel.h"
 
-static const NSString *KVBCellIdentifier = @"DefaultCell";
+static NSString *const KVBCellIdentifier = @"DefaultCell";
 static const NSInteger KVBPhotoPerLoading = 15;
 
 @interface ViewController ()<UITextFieldDelegate,UITableViewDelegate, UITableViewDataSource, KVBImageLoaderDelegate>
@@ -115,6 +115,11 @@ static const NSInteger KVBPhotoPerLoading = 15;
     }
 }
 
+- (nullable NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    return indexPath;
+}
 
 #pragma mark UITableViewDataSource
 

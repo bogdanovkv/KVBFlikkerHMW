@@ -11,5 +11,8 @@
 @interface KVBLikedViewController : UIViewController
 
 @property(nonatomic, strong) NSArray<SavedPhotos*> *photos;
+@property(nonatomic, weak) NSManagedObjectContext *contex;
+
+- (instancetype)initWithContext: (NSManagedObjectContext *) context;
 
 @end
