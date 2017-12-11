@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "KVBImageLoader.h"
 #import "KVBImageModel.h"
-
+#import "SavedPhotos+CoreDataClass.h"
 static NSString *const KVBCellIdentifier = @"DefaultCell";
 static const NSInteger KVBPhotoPerLoading = 15;
 
@@ -70,7 +70,6 @@ static const NSInteger KVBPhotoPerLoading = 15;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -115,10 +114,33 @@ static const NSInteger KVBPhotoPerLoading = 15;
     }
 }
 
-- (nullable NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+    KVBImageModel *img = self.photosArray[indexPath.row];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SavedPhotos"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"url_m==%@",img.urlHQ];
+    fetchRequest.predicate = predicate;
+    
+    NSArray *photo = [self.contex executeFetchRequest:fetchRequest error:nil];
+    
+    if(photo.count == 0)
+    {
+        SavedPhotos *photo = [NSEntityDescription insertNewObjectForEntityForName:@"SavedPhotos" inManagedObjectContext:self.contex];
+        photo.url_m = img.urlHQ;
+        photo.url_sq = img.urlSQ;
+        photo.photoDescription = img.personDescription;
+    
+        NSError *error = nil;
+    
+        [self.contex save:&error];
+        
+        if(error)
+        {
+            NSLog(@"Error %@", [error description]);
+        }
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    return indexPath;
 }
 
 #pragma mark UITableViewDataSource

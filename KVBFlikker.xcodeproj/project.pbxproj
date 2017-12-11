@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14F682791FDEA942004F3BE5 /* SavedPhotos+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F682771FDEA942004F3BE5 /* SavedPhotos+CoreDataProperties.m */; };
 		14FAA8C71FDD7BD80065EA8C /* defimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 14FAA8C61FDD7BD80065EA8C /* defimg.png */; };
 		14FAA8CA1FDDB29F0065EA8C /* KVBLikedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FAA8C91FDDB29F0065EA8C /* KVBLikedViewController.m */; };
 		14FAA8D01FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FAA8CD1FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.m */; };
-		14FAA8D11FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FAA8CF1FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.m */; };
 		B5CA7A301FDC388300B168DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CA7A2F1FDC388300B168DA /* main.m */; };
 		B5CA7A331FDC388300B168DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CA7A321FDC388300B168DA /* AppDelegate.m */; };
 		B5CA7A361FDC388300B168DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CA7A351FDC388300B168DA /* ViewController.m */; };
@@ -21,13 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14F682761FDEA942004F3BE5 /* SavedPhotos+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SavedPhotos+CoreDataProperties.h"; sourceTree = "<group>"; };
+		14F682771FDEA942004F3BE5 /* SavedPhotos+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SavedPhotos+CoreDataProperties.m"; sourceTree = "<group>"; };
 		14FAA8C61FDD7BD80065EA8C /* defimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defimg.png; sourceTree = "<group>"; };
 		14FAA8C81FDDB29F0065EA8C /* KVBLikedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVBLikedViewController.h; sourceTree = "<group>"; };
 		14FAA8C91FDDB29F0065EA8C /* KVBLikedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVBLikedViewController.m; sourceTree = "<group>"; };
 		14FAA8CC1FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SavedPhotos+CoreDataClass.h"; sourceTree = "<group>"; };
 		14FAA8CD1FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SavedPhotos+CoreDataClass.m"; sourceTree = "<group>"; };
-		14FAA8CE1FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SavedPhotos+CoreDataProperties.h"; sourceTree = "<group>"; };
-		14FAA8CF1FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SavedPhotos+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B5CA7A2B1FDC388300B168DA /* KVBFlikker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KVBFlikker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5CA7A2F1FDC388300B168DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5CA7A311FDC388300B168DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,8 +59,8 @@
 			children = (
 				14FAA8CC1FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.h */,
 				14FAA8CD1FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.m */,
-				14FAA8CE1FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.h */,
-				14FAA8CF1FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.m */,
+				14F682761FDEA942004F3BE5 /* SavedPhotos+CoreDataProperties.h */,
+				14F682771FDEA942004F3BE5 /* SavedPhotos+CoreDataProperties.m */,
 			);
 			name = CoreDataClasses;
 			sourceTree = "<group>";
@@ -183,11 +183,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14F682791FDEA942004F3BE5 /* SavedPhotos+CoreDataProperties.m in Sources */,
 				14FAA8CA1FDDB29F0065EA8C /* KVBLikedViewController.m in Sources */,
 				B5CA7A361FDC388300B168DA /* ViewController.m in Sources */,
 				14FAA8D01FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.m in Sources */,
 				B5CA7A331FDC388300B168DA /* AppDelegate.m in Sources */,
-				14FAA8D11FDDBDBB0065EA8C /* SavedPhotos+CoreDataProperties.m in Sources */,
 				B5F2384B1FDC4CD400405F23 /* KVBImageLoader.m in Sources */,
 				B5CA7A3C1FDC388400B168DA /* KVBFlikker.xcdatamodeld in Sources */,
 				B5CA7A301FDC388300B168DA /* main.m in Sources */,

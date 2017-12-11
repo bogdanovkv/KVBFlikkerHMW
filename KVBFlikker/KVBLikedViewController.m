@@ -9,9 +9,10 @@
 #import "KVBLikedViewController.h"
 static NSString *const KVBPhotoIdentifier = @"PhototCell";
 
-@interface KVBLikedViewController () <NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface KVBLikedViewController () <UITableViewDelegate, UITableViewDataSource>
+@property(nonatomic, strong) NSArray<SavedPhotos*> *photos;
+
 @property(nonatomic, strong) UITableView *photoTable;
-@property(nonatomic, strong) NSFetchedResultsController *fetchResultsController;
 @property(nonatomic, strong) NSCache *cache;
 
 @end
@@ -21,12 +22,12 @@ static NSString *const KVBPhotoIdentifier = @"PhototCell";
 {
     self = [super init];
     if (self) {
-        _photoTable = [[UITableView alloc] initWithFrame:CGRectMake(0 ,0 ,self.view.bounds.size.width, self.view.bounds.size.height - 44) style:UITableViewStyleGrouped];
+        _photoTable = [[UITableView alloc] initWithFrame:CGRectMake(0 ,self.navigationController.navigationBar.frame.size.height ,self.view.bounds.size.width, self.view.bounds.size.height - self.navigationController.navigationBar.frame.size.height) style:UITableViewStylePlain];
         _photoTable.delegate = self;
         _photoTable.dataSource = self;
         [_photoTable registerClass:[UITableViewCell class] forCellReuseIdentifier:KVBPhotoIdentifier];
         
-        _fetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[SavedPhotos fetchRequest] managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+
         _cache =[[NSCache alloc] init];
         
         _contex = context;
@@ -38,19 +39,25 @@ static NSString *const KVBPhotoIdentifier = @"PhototCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.photos = [self.contex executeFetchRequest: self.fetchResultsController.fetchRequest error:nil];
-    
+    [self.photoTable reloadData];
 
     
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+    self.photos = [self.contex executeFetchRequest:[SavedPhotos fetchRequest] error:nil];
+    
+    [self.photoTable reloadData];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark
+#pragma mark -UITableViewDataSource
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
@@ -58,10 +65,10 @@ static NSString *const KVBPhotoIdentifier = @"PhototCell";
     
     SavedPhotos *image = self.photos[indexPath.row];
     
-    if ([self.cache objectForKey:@(indexPath.row)] != nil)
+    if ([self.cache objectForKey:image.url_sq] != nil)
     {
         
-        UIImage *photo = [self.cache objectForKey:@(indexPath.row)];
+        UIImage *photo = [self.cache objectForKey:image.url_sq];
         
         cell.imageView.image = photo;
     }
@@ -74,7 +81,7 @@ static NSString *const KVBPhotoIdentifier = @"PhototCell";
             
             NSData *data = [NSData dataWithContentsOfURL:location];
             UIImage *photo = [UIImage imageWithData:data];
-            [self.cache setObject:photo forKey:@(indexPath.row)];
+            [self.cache setObject:photo forKey:image.url_sq];
             
             dispatch_sync(dispatch_get_main_queue(), ^{
                 cell.imageView.image = photo;
@@ -85,7 +92,7 @@ static NSString *const KVBPhotoIdentifier = @"PhototCell";
     }
     
     cell.textLabel.text = image.photoDescription;
-    
+
     return cell;
 }
 
@@ -94,7 +101,46 @@ static NSString *const KVBPhotoIdentifier = @"PhototCell";
     return self.photos.count;
 }
 
+#pragma mark -UITableViewDelegate
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        NSMutableArray *array = [NSMutableArray arrayWithArray:self.photos];
+        
+        [self.contex deleteObject:self.photos[indexPath.row]];
+        [self.contex  save:nil];
+        [self.photoTable beginUpdates];
+        
+        
+        [self.photoTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+        [array removeObjectAtIndex:indexPath.row];
+        self.photos = array;
+        
+        [self.photoTable endUpdates];
+    }
+}
+
+
+#pragma mark Editing Table
+
+- (void)editTable
+{
+    if (self.photoTable.editing == NO)
+    {
+        [self.photoTable setEditing: YES animated:YES];
+    }
+    else
+    {
+        [self.photoTable setEditing: NO animated:YES];
+    }
+}
 
 
 @end

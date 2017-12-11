@@ -2,7 +2,7 @@
 //  SavedPhotos+CoreDataProperties.h
 //  KVBFlikker
 //
-//  Created by Константин Богданов on 10.12.17.
+//  Created by Константин Богданов on 11.12.17.
 //  Copyright © 2017 Konstantin. All rights reserved.
 //
 //
@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<SavedPhotos *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSString *url_sq;
-@property (nullable, nonatomic, copy) NSString *url_m;
 @property (nullable, nonatomic, copy) NSString *photoDescription;
+@property (nullable, nonatomic, copy) NSString *url_m;
+@property (nullable, nonatomic, copy) NSString *url_sq;
 
 @end
 

@@ -31,9 +31,10 @@
     
     
     KVBLikedViewController *likedController = [[KVBLikedViewController alloc] initWithContext:self.persistentContainer.viewContext];
-    likedController.tabBarItem = rightItem;
+    UINavigationController *secController = [[UINavigationController alloc] initWithRootViewController:likedController];
+    secController.tabBarItem = rightItem;
     
-    tabBar.viewControllers = @[navController,likedController];
+    tabBar.viewControllers = @[navController,secController];
     self.window.rootViewController = tabBar;
     
     

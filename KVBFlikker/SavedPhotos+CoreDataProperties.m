@@ -2,7 +2,7 @@
 //  SavedPhotos+CoreDataProperties.m
 //  KVBFlikker
 //
-//  Created by Константин Богданов on 10.12.17.
+//  Created by Константин Богданов on 11.12.17.
 //  Copyright © 2017 Konstantin. All rights reserved.
 //
 //
@@ -12,11 +12,15 @@
 @implementation SavedPhotos (CoreDataProperties)
 
 + (NSFetchRequest<SavedPhotos *> *)fetchRequest {
-	return [[NSFetchRequest alloc] initWithEntityName:@"SavedPhotos"];
-}
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SavedPhotos" ];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"url_m!=nil"];
+    fetchRequest.predicate = predicate;
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"photoDescription" ascending:YES]];
+    
+    return fetchRequest;}
 
-@dynamic url_sq;
-@dynamic url_m;
 @dynamic photoDescription;
+@dynamic url_m;
+@dynamic url_sq;
 
 @end
