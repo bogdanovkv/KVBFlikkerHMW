@@ -155,10 +155,10 @@ static const NSInteger KVBPhotoPerLoading = 15;
     
     KVBImageModel *image = self.photosArray[indexPath.row];
     
-    if ([self.cache objectForKey:@(indexPath.row)] != nil)
+    if ([self.cache objectForKey:image.urlSQ] != nil)
     {
         
-        UIImage *photo = [self.cache objectForKey:@(indexPath.row)];
+        UIImage *photo = [self.cache objectForKey:image.urlSQ];
         
         cell.imageView.image = photo;
     }
@@ -171,9 +171,10 @@ static const NSInteger KVBPhotoPerLoading = 15;
             
             NSData *data = [NSData dataWithContentsOfURL:location];
             UIImage *photo = [UIImage imageWithData:data];
-            [self.cache setObject:photo forKey:@(indexPath.row)];
+            [self.cache setObject:photo forKey:image.urlSQ];
             
             dispatch_sync(dispatch_get_main_queue(), ^{
+            
                 cell.imageView.image = photo;
             });
         }];

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		14F682791FDEA942004F3BE5 /* SavedPhotos+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F682771FDEA942004F3BE5 /* SavedPhotos+CoreDataProperties.m */; };
-		14FAA8C71FDD7BD80065EA8C /* defimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 14FAA8C61FDD7BD80065EA8C /* defimg.png */; };
 		14FAA8CA1FDDB29F0065EA8C /* KVBLikedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FAA8C91FDDB29F0065EA8C /* KVBLikedViewController.m */; };
 		14FAA8D01FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FAA8CD1FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.m */; };
 		B5CA7A301FDC388300B168DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CA7A2F1FDC388300B168DA /* main.m */; };
@@ -23,7 +22,6 @@
 /* Begin PBXFileReference section */
 		14F682761FDEA942004F3BE5 /* SavedPhotos+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SavedPhotos+CoreDataProperties.h"; sourceTree = "<group>"; };
 		14F682771FDEA942004F3BE5 /* SavedPhotos+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SavedPhotos+CoreDataProperties.m"; sourceTree = "<group>"; };
-		14FAA8C61FDD7BD80065EA8C /* defimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defimg.png; sourceTree = "<group>"; };
 		14FAA8C81FDDB29F0065EA8C /* KVBLikedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVBLikedViewController.h; sourceTree = "<group>"; };
 		14FAA8C91FDDB29F0065EA8C /* KVBLikedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVBLikedViewController.m; sourceTree = "<group>"; };
 		14FAA8CC1FDDBDBB0065EA8C /* SavedPhotos+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SavedPhotos+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 				B5F2384C1FDC812E00405F23 /* KVBImageModel.h */,
 				B5F2384D1FDC812E00405F23 /* KVBImageModel.m */,
 				14FAA8CB1FDDBD7F0065EA8C /* CoreDataClasses */,
-				14FAA8C61FDD7BD80065EA8C /* defimg.png */,
 				B5CA7A3D1FDC388400B168DA /* Assets.xcassets */,
 				B5CA7A421FDC388400B168DA /* Info.plist */,
 				B5CA7A3A1FDC388400B168DA /* KVBFlikker.xcdatamodeld */,
@@ -171,7 +168,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14FAA8C71FDD7BD80065EA8C /* defimg.png in Resources */,
 				B5CA7A3E1FDC388400B168DA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

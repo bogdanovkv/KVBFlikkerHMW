@@ -34,8 +34,11 @@
     NSURLQueryItem *format = [NSURLQueryItem queryItemWithName:@"format" value:@"json"];
     NSURLQueryItem *imgFormat = [NSURLQueryItem queryItemWithName:@"extras" value:@"url_sq,url_m"];
     NSURLQueryItem *noCallBack = [NSURLQueryItem queryItemWithName:@"nojsoncallback" value:@"1"];
+    NSURLQueryItem *safeMode = [NSURLQueryItem queryItemWithName:@"safe_search" value:@"1"];
 
-    urlComponents.queryItems = @[method, apiKey, allTags, tagMode, format, pageNum, perpage, noCallBack, imgFormat];
+
+    
+    urlComponents.queryItems = @[method, apiKey, allTags, tagMode, format, pageNum, perpage, noCallBack, imgFormat, safeMode];
 
 
     

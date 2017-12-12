@@ -9,10 +9,11 @@
 #import "KVBLikedViewController.h"
 static NSString *const KVBPhotoIdentifier = @"PhototCell";
 
-@interface KVBLikedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface KVBLikedViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 @property(nonatomic, strong) NSArray<SavedPhotos*> *photos;
-
+@property(nonatomic, strong) UISearchBar *searchBar;
 @property(nonatomic, strong) UITableView *photoTable;
+@property(nonatomic, strong) NSFetchRequest *fetchrequest;
 @property(nonatomic, strong) NSCache *cache;
 
 @end
@@ -27,10 +28,10 @@ static NSString *const KVBPhotoIdentifier = @"PhototCell";
         _photoTable.dataSource = self;
         [_photoTable registerClass:[UITableViewCell class] forCellReuseIdentifier:KVBPhotoIdentifier];
         
-
         _cache =[[NSCache alloc] init];
         
         _contex = context;
+        
         
         [self.view addSubview:_photoTable];
     }
@@ -40,6 +41,12 @@ static NSString *const KVBPhotoIdentifier = @"PhototCell";
     [super viewDidLoad];
     
     [self.photoTable reloadData];
+    
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2 - 200, 15, 400, 40)];
+    self.searchBar.delegate = self;
+    self.searchBar.barStyle = UISearchBarStyleProminent;
+    
+    self.navigationItem.titleView = self.searchBar;
 
     
     // Do any additional setup after loading the view.
@@ -116,6 +123,7 @@ static NSString *const KVBPhotoIdentifier = @"PhototCell";
         
         [self.contex deleteObject:self.photos[indexPath.row]];
         [self.contex  save:nil];
+        [self.cache removeObjectForKey:self.photos[indexPath.row].url_sq];
         [self.photoTable beginUpdates];
         
         
@@ -142,5 +150,26 @@ static NSString *const KVBPhotoIdentifier = @"PhototCell";
     }
 }
 
+#pragma mark -Request
 
+-(NSFetchRequest *)fetchrequest
+{
+    if(self.searchBar.text.length >0)
+    {
+        NSFetchRequest *fr = [[NSFetchRequest alloc] initWithEntityName:@"SavedPhotos"];
+        fr.predicate = [NSPredicate predicateWithFormat:@"photoDescription CONTAINS %@", self.searchBar.text];
+        return fr;
+    }
+    else
+    {
+        return nil;
+    }
+}
+#pragma mark -UISearchBarDelegate
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    NSArray *arr = [self.contex executeFetchRequest:self.fetchrequest error:nil];
+    self.photos = arr;
+    [self.photoTable reloadData];
+}
 @end
